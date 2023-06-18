@@ -25,18 +25,8 @@ import * as fs from 'node:fs';
 // List of files containing chains available to the user.
 // The first item has a specific role in that we always connect to it at initialization.
 const chainSpecsFiles = [
-    //'../../demo-chain-specs/westend.json',
-    //'../../demo-chain-specs/westend-westmint.json',
     '../../demo-chain-specs/polkadot.json',
-    '../../demo-chain-specs/astar.json',
-    //'../../demo-chain-specs/polkadot-acala.json',
-    //'../../demo-chain-specs/kusama.json',
-    //'../../demo-chain-specs/kusama-statemine.json',
-    //'../../demo-chain-specs/kusama-karura.json',
-    //'../../demo-chain-specs/rococo.json',
-    //'../../demo-chain-specs/rococo-canvas.json',
-    '../../demo-chain-specs/tokyo-light.json',
-    '../../demo-chain-specs/shibuya.json'
+    '../../demo-chain-specs/eden.json',
 ];
 
 // Load all the files in a single map.
@@ -49,7 +39,7 @@ for (const file of chainSpecsFiles) {
         firstChainSpecId = decoded.id;
     chainSpecsById[decoded.id] = {
         chainSpec: content,
-        relayChain: decoded.relay_chain,
+        relayChain: decoded.relay_chain || decoded.relayChain,
     };
 }
 
